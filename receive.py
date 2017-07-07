@@ -9,6 +9,7 @@ def parse_xml(web_data):
     msg_type = xmlData.find('MsgType').text
     if msg_type == 'text':
         return TextMsg(xmlData)
+        print "xml parsed"
     elif msg_type == 'image':
         return ImageMsg(xmlData)
 
@@ -30,4 +31,3 @@ class ImageMsg(Msg):
         Msg.__init__(self, xmlData)
         self.PicUrl = xmlData.find('PicUrl').text
         self.MediaId = xmlData.find('MediaId').text
-        

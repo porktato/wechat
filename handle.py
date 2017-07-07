@@ -7,7 +7,7 @@ import receive
 import web
 
 class Handle(object):
-     def GET(self):
+    def GET(self):
         try:
             data = web.input()
             if len(data) == 0:
@@ -35,7 +35,8 @@ class Handle(object):
             webData = web.data()
             print "handle post webdata is " , webData
             recMsg = receive.parse_xml(webData)
-            if isinstance(recMsg.receive.Msg)and recMsg.MsgType == 'text':
+            if isinstance(recMsg.receive.Msg) and recMsg.MsgType == 'text':
+                print "msg type verified"
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 content = "test"
