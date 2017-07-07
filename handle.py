@@ -16,7 +16,7 @@ class Handle(object):
             timestamp = data.timestamp
             nonce = data.nonce
             echostr = data.echostr
-            token = "xxxx" #请按照公众平台官网\基本配置中信息填写
+            token = "salva" #请按照公众平台官网\基本配置中信息填写
 
             list = [token, timestamp, nonce]
             list.sort()
@@ -35,11 +35,11 @@ class Handle(object):
             webData = web.data()
             print "handle post webdata is " , webData
             recMsg = receive.parse_xml(webData)
-            if isinstance(recMsg.receive.Msg) and recMsg.MsgType == 'text':
+            if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 print "msg type verified"
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                content = "test"
+                content = recMsg.Content
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
                 return replyMsg.send()
             else:
